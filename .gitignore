@@ -1,0 +1,8 @@
+.idea
+build
+.gradle
+out
+unit_testing-junit-mockito.iml
+unit_testing-junit-mockito.ipr
+unit_testing-junit-mockito.iws
+gradle
