@@ -33,7 +33,7 @@ public class OrderFactory {
                     }
                     return null;
                 }
-        ).collect(Collectors.toList());
+        ).filter(Objects::nonNull).collect(Collectors.toList());
     }
 
     public Long getOrderId(){
@@ -56,5 +56,10 @@ public class OrderFactory {
 
     private Long getPrice(List<Order.OrderItem> items){
         return items.stream().filter(Objects::nonNull).mapToLong(a -> a.getPrice()).sum();
+    }
+
+    public String getErrorMessageForEmptyItems(String message){
+        System.out.println("No items present");
+        return (message + "Test");
     }
 }
