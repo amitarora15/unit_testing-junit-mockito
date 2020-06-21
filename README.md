@@ -57,6 +57,7 @@ Following capabilities of Unit testing are used
     1. `when(properties.get(”Anddroid”)).thenThrow(new IllegalArgumentException(...));`
     1. `doReturn(“42”).when(spyProperties).get(”shoeSize”);` or doThrowWhen used for spying 
     1. `doAnswer(returnsFirstArg()).when(list).add(anyString());`  or   `when(list.add(anyString())).thenAnswer(returnsFirstArg());` or `when(list.add(anyString())).then(returnsFirstArg());`
+    1. When mocking a void method, then when(...).then(...) won't work and we have to use doAnswer() or doThrow() for mocking a void method
     1.  @Spy or the spy() method can be used to wrap a real object. Every call, unless specified otherwise, is delegated to the object. doReturn is used here
     1. Behaviour testing - `verify(test, times(2)).getUniqueId();` or `verify(test).testing(ArgumentMatchers.eq(12));` and in end you can call `verifyNoMoreInteractions(test);`. You can use anyString() or any(A.class) for parameters
     1. @InjectMocks - used for injecting mocks in test object
