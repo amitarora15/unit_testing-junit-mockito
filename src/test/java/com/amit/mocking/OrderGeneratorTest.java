@@ -6,6 +6,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.*;
 
 import static org.mockito.Mockito.*;
+import static org.mockito.BDDMockito.*;
 import static org.mockito.AdditionalAnswers.*;
 import static org.junit.jupiter.api.Assertions.*;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -50,12 +51,13 @@ public class OrderGeneratorTest {
     @Test
     void givenNullItemsWhenOrderGenerationThenDoNothing(){
         when(factory.getErrorMessageForEmptyItems(anyString())).thenAnswer(returnsFirstArg());
-
+        //given(factory.getErrorMessageForEmptyItems(any())).willReturn(returnsFirstArg());
         String message = generatorUnderTest.generateOrder(null, 0L);
         assertEquals("Empty", message, "Message should be empty");
         //verify(factory, times(1)).getOrderId();
 
         verify(factory, atLeast(1)).getErrorMessageForEmptyItems(captor.capture());
+        //then(factory).should().getErrorMessageForEmptyItems(captor.capture());
         String argument = captor.getValue();
         assertEquals("Empty", argument);
 

@@ -45,6 +45,7 @@ Following capabilities of Unit testing are used
         1. Fake objects - In memory test
         1. Stubs - Generally for behaviour (partial implementation)
         1. Mocks - Dummy implementation
+    1. Mocking reduces failure of test due to failure in dependent components which should not be added in testing of unit and also reduces setting to test complexity
     1. the class to be tested should avoid any hard dependency on external data.
     1. To use Mockito in your test case, use - `@ExtendWith(MockitoExtension.class)` on class.  The purpose of the JUnit 5 extensions is to extend the behavior of test classes or methods, and these can be reused for multiple tests.
     1. To create a mock bean, annotate it with `@Mock` or `Mockito.mock()`
@@ -82,7 +83,7 @@ Important Points
 1. Holding the data set in a Collection and iterating over it with the assertion in the loop body has the problem that the first assertion failure will stop the test execution. Thats why use Dynamic Test, Repeated Tests or Parameterized Test
 1. Assertion Libraries
 * Hamcrest is an additional framework for software tests. (import static org.hamcrest.CoreMatchers.*)
-```java
+```
  assertThat(Arrays.asList("one", "two", "three"), hasItems("one", "three"));
  assertThat("albumen", both(containsString("a")).and(containsString("b")));
  assertThat(Arrays.asList(new String[] { "fun", "ban", "net" }), everyItem(containsString("n")));
@@ -96,8 +97,9 @@ Important Points
    import static org.junit.jupiter.api.Assertions.*;
    import static org.hamcrest.CoreMatchers.*;
    import static org.assertj.core.api.Assertions.*;
+   import static org.mockito.BDDMockito.*;  //for given then syntax instead of when and verify
 ```
-
+* JSON Assert can also be used like `JSONAssert.assertEquals(expected, response.getBody(), false);`
 
 ---    
 _References_
