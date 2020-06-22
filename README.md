@@ -80,12 +80,25 @@ Important Points
 1. For each test method, Java creates a new instance of the testing class.
 1. Bad idea - Global variables & expectation of testing order
 1. Holding the data set in a Collection and iterating over it with the assertion in the loop body has the problem that the first assertion failure will stop the test execution. Thats why use Dynamic Test, Repeated Tests or Parameterized Test
-1. Static Import
+1. Assertion Libraries
+* Hamcrest is an additional framework for software tests. (import static org.hamcrest.CoreMatchers.*)
+```java
+ assertThat(Arrays.asList("one", "two", "three"), hasItems("one", "three"));
+ assertThat("albumen", both(containsString("a")).and(containsString("b")));
+ assertThat(Arrays.asList(new String[] { "fun", "ban", "net" }), everyItem(containsString("n")));
+ assertThat(new Object(), not(sameInstance(new Object())));
+```
+* AssertJ is other library for assertions
+* Static Import
 ```java
    import static org.mockito.Mockito.*;
    import static org.mockito.AdditionalAnswers.*;
    import static org.junit.jupiter.api.Assertions.*;
+   import static org.hamcrest.CoreMatchers.*;
+   import static org.assertj.core.api.Assertions.*;
 ```
+
+
 ---    
 _References_
 >* https://stackabuse.com/unit-testing-in-java-with-junit-5/
