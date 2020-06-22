@@ -46,7 +46,7 @@ Following capabilities of Unit testing are used
         1. Stubs - Generally for behaviour (partial implementation)
         1. Mocks - Dummy implementation
     1. the class to be tested should avoid any hard dependency on external data.
-    1. To use Mockito in your test case, use - `@ExtendWith(MockitoExtension.class)` on class
+    1. To use Mockito in your test case, use - `@ExtendWith(MockitoExtension.class)` on class.  The purpose of the JUnit 5 extensions is to extend the behavior of test classes or methods, and these can be reused for multiple tests.
     1. To create a mock bean, annotate it with `@Mock` or `Mockito.mock()`
     1. To use strict settings, use `@MockitoSettings(strictness = Strictness.WARN)` on class or can be defined used `Mockito.lenient()` for each verify/when invocation
         1. test fails early when a stubbed method gets called with different arguments than what it was configured for (with PotentialStubbingProblem exception).
